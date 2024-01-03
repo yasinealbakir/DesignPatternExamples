@@ -14,8 +14,8 @@ public class UserBuilder {
         return this;
     }
 
-    String username;
-    String password;
+    private String username;
+    private String password;
 
     public UserBuilder() {
 

@@ -5,15 +5,27 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
     WebDriver driver;
-    By btnEnter = By.xpath("//button[normalize-space()='Bank Manager Login']");
+    By usernameInput = By.id("kullaniciAdi");
+    By passwordInput = By.id("parola");
+    By loginButton = By.id("btnGirisYap");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public HomePage signIn() {
-        driver.get("https://www.way2automation.com/angularjs-protractor/banking/#/login");
-        driver.findElement(btnEnter).click();
+
+    public LoginPage enterUsername(String username) {
+        driver.findElement(usernameInput).sendKeys(username);
+        return this;
+    }
+
+    public LoginPage enterPassword(String password) {
+        driver.findElement(passwordInput).sendKeys(password);
+        return this;
+    }
+
+    public HomePage clickLoginButton() {
+        driver.findElement(loginButton).click();
         return new HomePage(driver);
     }
 }
